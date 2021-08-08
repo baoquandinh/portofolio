@@ -1,0 +1,22 @@
+.about-wrapper {
+    height: 100vh;
+    /* border: 1px blue solid; */
+}
+
+.about-section {
+    padding-top: 48px !important;
+    height: 100%;
+    align-items: center;
+}
+
+.about-picture-section, .about-info-section {
+    /* border: 1px green solid; */
+}
+
+.about-picture-section {
+  text-align: center;
+}
+
+.download-icon{
+    margin-right: .8em;
+}

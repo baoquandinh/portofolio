@@ -1,0 +1,58 @@
+.home-wrapper {
+    width: 100%;
+    height: calc(100vh - 48px);
+    margin-top: 48px;
+    /* border: 1px red solid; */
+}
+
+.home-banner {
+    height: 90%;
+    text-align: center;
+    align-items: center;
+}
+
+
+.banner-text h1 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.banner-text h3 {
+    font-family: 'Coming Soon', cursive;
+}
+
+.social {
+    padding-left: 0;
+}
+
+.social li {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 20px;
+}
+
+.scrolldown {
+    text-align: center;
+    align-items: center;
+}
+
+.text-writter h3 {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3s steps(40, end) infinite;
+}
+
+.social-wrapper {
+    padding-top: 1em;
+}
+
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
