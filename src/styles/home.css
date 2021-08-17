@@ -1,8 +1,13 @@
 .home-wrapper {
     width: 100%;
-    height: calc(100vh - 48px);
-    margin-top: 48px;
-    /* border: 1px red solid; */
+    height: 100vh;
+    border: 1px blue solid;
+    background: url('/src/images/background.jpg') no-repeat center center fixed;
+    background-position: 20% 32%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .home-banner {

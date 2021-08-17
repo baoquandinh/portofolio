@@ -16,7 +16,7 @@ export const About = () => {
   const classes = useStyles();
 
   return (
-    <Container id="about-section" className="about-wrapper">
+    <Container fluid id="about-section" className="about-wrapper">
       <Row className="about-section">
         <Col xl={3} className="about-picture-section">
           <MdFace size="8em" />

@@ -1,5 +1,6 @@
 .about-wrapper {
     height: 100vh;
+    background-color: #EAEAEA;
     /* border: 1px blue solid; */
 }
 
@@ -7,6 +8,8 @@
     padding-top: 48px !important;
     height: 100%;
     align-items: center;
+    color: #252A34;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .about-picture-section, .about-info-section {

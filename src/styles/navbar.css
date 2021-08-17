@@ -1,7 +1,7 @@
 .nav-wrapper {
     width: 100%;
     min-height: 48px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     position: fixed;
     top: 0;
     z-index: 10;
@@ -9,4 +9,5 @@
 
 .nav-wrapper .nav-link {
     font-family: 'Open Sans', sans-serif;
+    color: #212529;
 }
