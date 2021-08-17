@@ -4,8 +4,9 @@ import { GoMarkGithub } from "react-icons/go";
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import "../styles/home.css";
 import { handleTransition } from "../components/Navbar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { IconContext } from "react-icons";
+import Image from "react-bootstrap/Image";
 
 const goToWebpage = (link) => {
   window.open(link, "_target");
@@ -37,6 +38,23 @@ export const Home = () => {
     <Container id="home-section" fluid className="home-wrapper">
       <Row className="home-banner">
         <Col className="banner-text" xl={12}>
+          <Row>
+            <Col>
+              <Image
+                fluid
+                src={`${process.env.PUBLIC_URL}/images/portfolio.jpg`}
+                roundedCircle
+                style={{height: '200px'}}
+              />
+            </Col>
+            {/* <Col>
+              <IconContext.Provider
+                value={{ color: "white", className: "global-class-name" }}
+              >
+                <MdFace size="8em" />
+              </IconContext.Provider>
+            </Col> */}
+          </Row>
           <Row style={{ paddingBottom: "1em" }}>
             <h1>Hello I'm Baoquan Dinh</h1>
           </Row>
@@ -47,20 +65,28 @@ export const Home = () => {
             <Col xl={4} className="align-self-center">
               <ul className="social">
                 <li key="linkedin">
-                  <AiOutlineLinkedin
-                    size="2em"
-                    onClick={() =>
-                      goToWebpage("https://www.linkedin.com/in/baoquandinh/")
-                    }
-                  />
+                  <IconContext.Provider
+                    value={{ color: "white", className: "global-class-name" }}
+                  >
+                    <AiOutlineLinkedin
+                      size="2em"
+                      onClick={() =>
+                        goToWebpage("https://www.linkedin.com/in/baoquandinh/")
+                      }
+                    />
+                  </IconContext.Provider>
                 </li>
                 <li key="github">
-                  <GoMarkGithub
-                    size="2em"
-                    onClick={() =>
-                      goToWebpage("https://github.com/baoquandinh")
-                    }
-                  />
+                  <IconContext.Provider
+                    value={{ color: "white", className: "global-class-name" }}
+                  >
+                    <GoMarkGithub
+                      size="2em"
+                      onClick={() =>
+                        goToWebpage("https://github.com/baoquandinh")
+                      }
+                    />
+                  </IconContext.Provider>
                 </li>
               </ul>
             </Col>
