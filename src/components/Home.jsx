@@ -47,13 +47,6 @@ export const Home = () => {
                 style={{height: '200px'}}
               />
             </Col>
-            {/* <Col>
-              <IconContext.Provider
-                value={{ color: "white", className: "global-class-name" }}
-              >
-                <MdFace size="8em" />
-              </IconContext.Provider>
-            </Col> */}
           </Row>
           <Row style={{ paddingBottom: "1em" }}>
             <h1>Hello I'm Baoquan Dinh</h1>
@@ -66,7 +59,7 @@ export const Home = () => {
               <ul className="social">
                 <li key="linkedin">
                   <IconContext.Provider
-                    value={{ color: "white", className: "global-class-name" }}
+                    value={{ color: "white", className: "global-class-name global-pointer" }}
                   >
                     <AiOutlineLinkedin
                       size="2em"
@@ -78,7 +71,7 @@ export const Home = () => {
                 </li>
                 <li key="github">
                   <IconContext.Provider
-                    value={{ color: "white", className: "global-class-name" }}
+                    value={{ color: "white", className: "global-class-name global-pointer" }}
                   >
                     <GoMarkGithub
                       size="2em"
@@ -95,7 +88,7 @@ export const Home = () => {
       </Row>
       <Row className="scrolldown">
         <IconContext.Provider
-          value={{ color: "white", className: "global-class-name" }}
+          value={{ color: "white", className: "global-class-name global-pointer" }}
         >
           <div>
             <FaArrowAltCircleDown
