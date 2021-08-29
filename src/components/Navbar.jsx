@@ -9,7 +9,7 @@ export const handleTransition = (section) => {
 };
 
 export const Navbar = () => {
-  const navItems = ["home", "about", "skills", "projects"];
+  const navItems = ["home", "about", "projects"];
 
   return (
     <div className="nav-wrapper">

@@ -1,9 +1,17 @@
 import "../styles/skills-progress-bar.css";
+import {
+  Container,
+  Box,
+  Grid,
+  Modal,
+  Paper,
+  makeStyles,
+} from "@material-ui/core";
 
 export const SkillProgressBar = ({ img, percentage }) => {
   const strokeDashOffset = 440 - (440 * percentage) / 100;
   return (
-    <div className="box">
+    <Box className="box">
       <div className="percent">
         <svg>
           <circle
@@ -24,6 +32,6 @@ export const SkillProgressBar = ({ img, percentage }) => {
           style={{ backgroundImage: `url(/images/${img})` }}
         ></div>
       </div>
-    </div>
+    </Box>
   );
 };
