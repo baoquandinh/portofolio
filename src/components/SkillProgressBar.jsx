@@ -1,4 +1,5 @@
 import "../styles/skills-progress-bar.css";
+import { Typography } from "@material-ui/core";
 import {
   Container,
   Box,
@@ -8,7 +9,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 
-export const SkillProgressBar = ({ img, percentage }) => {
+export const SkillProgressBar = ({ img, percentage, name }) => {
   const strokeDashOffset = 440 - (440 * percentage) / 100;
   return (
     <Box className="box">
@@ -30,7 +31,9 @@ export const SkillProgressBar = ({ img, percentage }) => {
         <div
           className="symbol"
           style={{ backgroundImage: `url(/images/${img})` }}
-        ></div>
+        >
+          <Typography className="text">{name.toUpperCase()}</Typography>
+        </div>
       </div>
     </Box>
   );

@@ -3,7 +3,7 @@
     width: 150px;
     height: 150px;
     background: #fff;
-    box-shadow: 0 30px 60px rgba(0,0,0,.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .2);
     border-radius: 100px;
 }
 
@@ -46,8 +46,11 @@
 }
 
 .box .text {
+    position: relative;
+    top: 45px;
     padding: 10px 0 0;
     color: #999;
     font-weight: 700;
     letter-spacing: 1px;
+    font-size: .75em
 }

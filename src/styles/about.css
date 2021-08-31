@@ -1,25 +1,15 @@
-.about-wrapper {
-    height: 100vh;
-    background-color: #EAEAEA;
-    /* border: 1px blue solid; */
-}
-
-.about-section {
+.about-container {
+    /* height: 100vh; */
+    min-height: 100vh;
+    background-color: #222831;
     padding-top: 48px !important;
-    height: 100%;
-    align-items: center;
-    color: #252A34;
+    color: #EEEEEE;
     font-family: 'Open Sans', sans-serif;
 }
 
-.about-picture-section, .about-info-section {
-    /* border: 1px green solid; */
-}
-
-.about-picture-section {
-  text-align: center;
-}
-
-.download-icon{
-    margin-right: .8em;
+.about-wrapper {
+    height: 100%;
+    width: 100%;
+    color: #EEEEEE;
+    font-family: 'Open Sans', sans-serif;
 }
