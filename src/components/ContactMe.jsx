@@ -81,13 +81,13 @@ export const ContactMe = () => {
     const isEmailValid = EmailValidator.validate(email)
 
     switch (true) {
-      case name == "": {
+      case name === "": {
         setNameErrorMessage("Please provide a name");
       }
-      case message == "": {
+      case message === "": {
         setMessageErrorMessage("Please provide a message");
       }
-      case isEmailValid == false: {
+      case isEmailValid === false: {
         setEmailErrorMessage("Please provide a valid email");
       }
       default: {
@@ -95,7 +95,7 @@ export const ContactMe = () => {
       }
     }
 
-    if (name == "" || email == "" || message == "") {
+    if (name === "" || email === "" || message === "") {
       console.error("missing information");
       return;
     }
@@ -118,7 +118,7 @@ export const ContactMe = () => {
       )
       .then(
         (response) => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             setEmailSent(true);
             setLoading(false);
           }

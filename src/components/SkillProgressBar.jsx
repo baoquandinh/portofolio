@@ -1,12 +1,7 @@
 import "../styles/skills-progress-bar.css";
 import { Typography } from "@material-ui/core";
 import {
-  Container,
   Box,
-  Grid,
-  Modal,
-  Paper,
-  makeStyles,
 } from "@material-ui/core";
 
 export const SkillProgressBar = ({ img, percentage, name }) => {

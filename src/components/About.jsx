@@ -97,7 +97,7 @@ export const About = () => {
               Hello there! I'm a Front End Developer from California who
               specializes in JavaScript. In additional to my knowledge of
               JavaScript, I also bring with me my passion for learning, solving
-              problems, and positive, subborn attitude to overcome new
+              problems, and can-do attitude to overcome any new
               challenges thrown my way. I have a strong{" "}
               <strong>passion for learning </strong>
               and <strong>improving myself</strong>. I know I can improve and I

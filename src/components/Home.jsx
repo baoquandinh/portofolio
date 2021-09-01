@@ -4,7 +4,7 @@ import { GoMarkGithub } from "react-icons/go";
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import "../styles/home.css";
 import { handleTransition } from "../components/Navbar";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import { IconContext } from "react-icons";
 import Image from "react-bootstrap/Image";
 
@@ -21,19 +21,19 @@ export const Home = () => {
   let [counter, setCounter] = useState(0);
   let [title, setTitle] = useState(titles[counter]);
 
-  useEffect(() => {
-    let interval = setInterval(() => {
-      if (counter === titles.length - 1) {
-        setCounter((counter *= 0));
-      } else {
-        setCounter((counter += 1));
-      }
-      setTitle(titles[counter]);
-    }, 3000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [title]);
+  // useEffect(() => {
+  //   let interval = setInterval(() => {
+  //     if (counter === titles.length - 1) {
+  //       setCounter((counter *= 0));
+  //     } else {
+  //       setCounter((counter += 1));
+  //     }
+  //     setTitle(titles[counter]);
+  //   }, 3000);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [title]);
   return (
     <Container id="home-section" fluid className="home-wrapper">
       <Row className="home-banner">
@@ -51,7 +51,7 @@ export const Home = () => {
           <Row style={{ paddingBottom: "1em" }}>
             <h1>Hello I'm Baoquan Dinh</h1>
           </Row>
-          <Row className="text-writter">
+          <Row>
             <h3>{title}</h3>
           </Row>
           <Row className="justify-content-center social-wrapper">
