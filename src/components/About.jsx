@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginBottom: 10,
     width: 250,
+    fontFamily: "'Roboto', sans-serif;",
   },
   gridContainer: {
     height: "100%",
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   typography: {
     textAlign: "center",
+    fontFamily: "'Roboto', sans-serif;",
   },
   contactMeModal: {
     display: "flex",
@@ -92,16 +94,16 @@ export const About = () => {
           </Grid>
           <Grid item>
             <Typography className={classes.typography}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              Hello there! I'm a Front End Developer from California who
+              specializes in JavaScript. In additional to my knowledge of
+              JavaScript, I also bring with me my passion for learning, solving
+              problems, and positive, subborn attitude to overcome new
+              challenges thrown my way. I have a strong{" "}
+              <strong>passion for learning </strong>
+              and <strong>improving myself</strong>. I know I can improve and I
+              will strive to continue forward with a positive mindset. I'm
+              always on the lookout for new projects to work on so feel free to
+              reach out!
             </Typography>
           </Grid>
           <Grid
@@ -171,9 +173,10 @@ export const About = () => {
                   item
                   xs={12}
                   sm={12}
-                  md={3}
+                  md={4}
+                  lg={6}
                   key={`${skill}${index}`}
-                  style={{ textAlign: "center" , paddingTop: 10}}
+                  style={{ textAlign: "center", paddingTop: 10 }}
                 >
                   <Box
                     display="flex"

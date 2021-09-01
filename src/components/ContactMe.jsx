@@ -22,14 +22,14 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
   },
-  button: {
-    marginBottom: 10,
-    width: 250,
+  buttonContainer: {
+    paddingTop: 10,
   },
   buttonProgress: {
     position: "absolute",
     marginLeft: -67,
     marginTop: 7,
+    color: "green",
   },
   buttonSuccess: {
     backgroundColor: "green",
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textInputField: {
     width: "100%",
-    padding: 15,
+    padding: "15px 0px 0px 0px",
   },
   form: {
     display: "flex",
@@ -78,6 +78,7 @@ export const ContactMe = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [emailSent, setEmailSent] = useState(false);
+
   const sendEmail = () => {
     if (name == "" || email == "" || message == "") {
       console.error("missing information");
@@ -90,114 +91,95 @@ export const ContactMe = () => {
       message,
     };
     setLoading(true);
-    emailjs
-      .send(
-        "service_86dgq1p",
-        "template_7axkvtc",
-        emailParams,
-        "user_UfC3xQimf9UCPJKwL75dC"
-      )
-      .then(
-        (response) => {
-          if (response.status == 200) {
-            setEmailSent(true);
-            setLoading(false);
-          }
-        },
-        (error) => {
-          console.error(`There was an error sending the email`, error);
-        }
-      );
+    setTimeout(() => {
+      setEmailSent(true);
+      setLoading(false);
+    }, 3000);
+    // emailjs
+    //   .send(
+    //     "service_86dgq1p",
+    //     "template_7axkvtc",
+    //     emailParams,
+    //     "user_UfC3xQimf9UCPJKwL75dC"
+    //   )
+    //   .then(
+    //     (response) => {
+    //       if (response.status == 200) {
+    //         setEmailSent(true);
+    //         setLoading(false);
+    //       }
+    //     },
+    //     (error) => {
+    //       console.error(`There was an error sending the email`, error);
+    //     }
+    //   );
   };
   return (
-    <Grid container className={classes.gridContainer}>
-      <Grid
-        container
-        item
-        className={classes.gridItem}
-        justifyContent="center"
-        alignItems="center"
-        spacing={3}
-      >
-        <Grid item style={{ width: "100%" }}>
-          <Typography variant="h3" component="h3">
+    <Grid container justifyContent="center" className={classes.gridContainer}>
+      <Grid item>
+        <Box className={classes.boxContainer}>
+          <Typography variant="h4" component="h4">
             Get In Touch
           </Typography>
-          <Typography variant="h4" component="h4">
+          <Typography variant="subtitle1" component="h5">
             Feel free to message me with any questions!
           </Typography>
-          <Grid container direction="column">
-            <form noValidate autoComplete="off">
-              <Grid item>
-                <TextField
-                  variant="filled"
-                  placeholder="Enter your name"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                  className={classes.textInputField}
-                ></TextField>
-                <TextField
-                  variant="filled"
-                  placeholder="Enter your email address"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  className={classes.textInputField}
-                ></TextField>
-                <TextField
-                  className={classes.textInputField}
-                  onChange={(e) => {
-                    setMessage(e.target.value);
-                  }}
-                  multiline
-                  variant="filled"
-                  minRows={6}
-                  placeholder="Go ahead, what are your questions..."
-                />
-              </Grid>
-            </form>
-
-            <Grid item style={{ textAlign: "center" }}>
-              <Box>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  endIcon={
-                    emailSent ? (
-                      <CheckIcon className={classes.buttonSuccess} />
-                    ) : (
-                      <SendIcon />
-                    )
-                  }
-                  onClick={sendEmail}
-                  className={loading || emailSent ? classes.disabled : ""}
-                >
-                  {emailSent ? "Email Sent" : "Send"}
-                </Button>
-                {loading && (
-                  <CircularProgress
-                    size={30}
-                    className={classes.buttonProgress}
-                  />
-                )}
-              </Box>
-            </Grid>
-          </Grid>
-        </Grid>
+          <TextField
+            variant="filled"
+            placeholder="Enter your name"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            className={classes.textInputField}
+          ></TextField>
+          <TextField
+            variant="filled"
+            placeholder="Enter your email address"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            className={classes.textInputField}
+          ></TextField>
+          <TextField
+            className={classes.textInputField}
+            onChange={(e) => {
+              setMessage(e.target.value);
+            }}
+            multiline
+            variant="filled"
+            minRows={6}
+            placeholder="Go ahead, what are your questions..."
+          />
+          <Box className={classes.buttonContainer}>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              endIcon={
+                emailSent ? (
+                  <CheckIcon className={classes.buttonSuccess} />
+                ) : (
+                  <SendIcon />
+                )
+              }
+              onClick={sendEmail}
+              className={"" + (emailSent && !loading ? classes.disabled : "")}
+            >
+              {emailSent && !loading ? "Email Sent" : "Send"}
+            </Button>
+            {loading && (
+              <CircularProgress size={30} className={classes.buttonProgress} />
+            )}
+          </Box>
+        </Box>
       </Grid>
-      <Grid
-        container
-        item
-        className={classes.gridItem}
-        style={{ height: "100%" }}
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Grid item>
+      <Grid item>
+        <Box
+          display={{ xs: "none", md: "block" }}
+          className={classes.boxContainer}
+        >
           <ContactMeSvg />
-        </Grid>
+        </Box>
       </Grid>
     </Grid>
   );
