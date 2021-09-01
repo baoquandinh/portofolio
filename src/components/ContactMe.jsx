@@ -1,21 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Container,
-  Box,
-  Grid,
-  Modal,
-  Paper,
-  Typography,
-  TextField,
-  TextareaAutosize,
-  Button,
-} from "@material-ui/core";
+import { Box, Grid, Typography, TextField, Button } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import { ContactMeSvg } from "./img/ContactMeSvg";
 import { useState } from "react";
 import emailjs from "emailjs-com";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import CheckIcon from "@material-ui/icons/Check";
+import * as EmailValidator from "email-validator";
 
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
@@ -78,41 +69,64 @@ export const ContactMe = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [emailSent, setEmailSent] = useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const [nameErrorMessage, setNameErrorMessage] = useState("");
+  const [messageErrorMessage, setMessageErrorMessage] = useState("");
 
   const sendEmail = () => {
+    setNameErrorMessage("");
+    setMessageErrorMessage("");
+    setEmailErrorMessage("");
+
+    const isEmailValid = EmailValidator.validate(email)
+
+    switch (true) {
+      case name == "": {
+        setNameErrorMessage("Please provide a name");
+      }
+      case message == "": {
+        setMessageErrorMessage("Please provide a message");
+      }
+      case isEmailValid == false: {
+        setEmailErrorMessage("Please provide a valid email");
+      }
+      default: {
+        break;
+      }
+    }
+
     if (name == "" || email == "" || message == "") {
       console.error("missing information");
       return;
     }
 
-    const emailParams = {
-      name,
-      email,
-      message,
-    };
+    if(!isEmailValid) {
+      return
+    }
+
     setLoading(true);
-    setTimeout(() => {
-      setEmailSent(true);
-      setLoading(false);
-    }, 3000);
-    // emailjs
-    //   .send(
-    //     "service_86dgq1p",
-    //     "template_7axkvtc",
-    //     emailParams,
-    //     "user_UfC3xQimf9UCPJKwL75dC"
-    //   )
-    //   .then(
-    //     (response) => {
-    //       if (response.status == 200) {
-    //         setEmailSent(true);
-    //         setLoading(false);
-    //       }
-    //     },
-    //     (error) => {
-    //       console.error(`There was an error sending the email`, error);
-    //     }
-    //   );
+    emailjs
+      .send(
+        "service_86dgq1p",
+        "template_7axkvtc",
+        {
+          name,
+          email,
+          message,
+        },
+        "user_UfC3xQimf9UCPJKwL75dC"
+      )
+      .then(
+        (response) => {
+          if (response.status == 200) {
+            setEmailSent(true);
+            setLoading(false);
+          }
+        },
+        (error) => {
+          console.error(`There was an error sending the email`, error);
+        }
+      );
   };
   return (
     <Grid container justifyContent="center" className={classes.gridContainer}>
@@ -125,6 +139,8 @@ export const ContactMe = () => {
             Feel free to message me with any questions!
           </Typography>
           <TextField
+            error={nameErrorMessage !== ""}
+            helperText={nameErrorMessage}
             variant="filled"
             placeholder="Enter your name"
             onChange={(e) => {
@@ -133,6 +149,8 @@ export const ContactMe = () => {
             className={classes.textInputField}
           ></TextField>
           <TextField
+            error={emailErrorMessage !== ""}
+            helperText={emailErrorMessage}
             variant="filled"
             placeholder="Enter your email address"
             onChange={(e) => {
@@ -141,6 +159,8 @@ export const ContactMe = () => {
             className={classes.textInputField}
           ></TextField>
           <TextField
+            error={messageErrorMessage !== ""}
+            helperText={messageErrorMessage}
             className={classes.textInputField}
             onChange={(e) => {
               setMessage(e.target.value);
