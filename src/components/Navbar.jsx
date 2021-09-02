@@ -1,6 +1,8 @@
 import "../test.css";
 import "../styles/navbar.css";
 import { Nav } from "react-bootstrap";
+import smoothscroll from "smoothscroll-polyfill";
+smoothscroll.polyfill()
 
 export const handleTransition = (section) => {
   document
@@ -14,11 +16,14 @@ export const Navbar = () => {
   return (
     <div className="nav-wrapper">
       <Nav className="justify-content-center">
-        {navItems.map(((item, index) => (
-          <Nav.Item key={`${item}${index}`} onClick={() => handleTransition(item)}>
+        {navItems.map((item, index) => (
+          <Nav.Item
+            key={`${item}${index}`}
+            onClick={() => handleTransition(item)}
+          >
             <Nav.Link>{item.toUpperCase()}</Nav.Link>
           </Nav.Item>
-        )))}
+        ))}
       </Nav>
     </div>
   );
