@@ -2,7 +2,7 @@ import "../test.css";
 import "../styles/navbar.css";
 import { Nav } from "react-bootstrap";
 import smoothscroll from "smoothscroll-polyfill";
-smoothscroll.polyfill()
+smoothscroll.polyfill();
 
 export const handleTransition = (section) => {
   document
@@ -15,7 +15,7 @@ export const Navbar = () => {
 
   return (
     <div className="nav-wrapper">
-      <Nav className="justify-content-center">
+      <Nav className="justify-content-center navbar navbar-dark bg-dark">
         {navItems.map((item, index) => (
           <Nav.Item
             key={`${item}${index}`}
