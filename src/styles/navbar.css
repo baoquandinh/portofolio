@@ -13,3 +13,7 @@
     font-family: 'Open Sans', sans-serif;
     color: white;
 }
+
+.nav-item a:hover {
+    color: #0d6efd !important;
+}
