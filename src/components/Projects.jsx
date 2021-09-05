@@ -19,6 +19,7 @@ const useStyle = makeStyles((theme) => ({
   gridContainer: {
     minHeight: "100vh",
     backgroundColor: "#393E46",
+    paddingTop: 45
   },
   textContainer: {
     padding: "1.5em",
@@ -27,37 +28,41 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const chips = [
-  { name: "JavaScript", selected: true },
-  { name: "ReactJS", selected: true },
-  { name: "NodeJS", selected: true },
-  { name: "HTML", selected: true },
-  { name: "CSS", selected: true },
-  { name: "API", selected: true },
-  { name: "ExpressJS", selected: true },
-  { name: "MaterialUI", selected: true },
-  { name: "Bootstrap", selected: true },
-  { name: "Mobile Design", selected: true },
+  { name: "JavaScript", selected: false },
+  { name: "ReactJS", selected: false },
+  { name: "NodeJS", selected: false },
+  { name: "HTML", selected: false },
+  { name: "CSS", selected: false },
+  { name: "API", selected: false },
+  { name: "ExpressJS", selected: false },
+  { name: "MaterialUI", selected: false },
+  { name: "Bootstrap", selected: false },
+  { name: "Mobile Design", selected: false },
 ];
 
 const projects = [
   {
     name: "Memory Game",
     description: "A simple memory game to test your skills.",
+    src: "memorygame",
     chips: ["HTML", "CSS", "JavaScript"],
   },
   {
     name: "Pixel Art Maker",
     description: "A single page app that allows user to draw their own pixel art.",
+    src: "pixelArtMaker",
     chips: ["HTML", "CSS", "JavaScript"],
   },
   {
     name: "Custom Frogger Replica",
     description: "A web based Frogger replica arcade game.",
+    src: "froggerReplica",
     chips: ["HTML", "CSS", "JavaScript"],
   },
   {
     name: "Portfolio V1",
     description: "My first portfolio I built while participating in the Front End Nanodegree Program.",
+    externalSrc: "https://baoquandinh.github.io",
     chips: ["HTML", "CSS", "JavaScript", "Mobile Design"],
   },
 ];
@@ -105,7 +110,13 @@ export const Projects = () => {
         <Grid item container xs={12} md={4} direction="column" justifyContent="center" spacing={2}>
           {projects.map((project, index) => (
             <Grid key={`${project.name}-${index}`} item>
-              <Project name={project.name} description={project.description} chips={project.chips} />
+              <Project
+                name={project.name}
+                description={project.description}
+                chips={project.chips}
+                externalSrc={project.externalSrc}
+                src={project.src}
+              />
             </Grid>
           ))}
         </Grid>
