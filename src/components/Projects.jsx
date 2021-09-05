@@ -1,57 +1,113 @@
-import {
-  Container,
-  Box,
-  makeStyles,
-  Typography,
-  Grid,
-} from "@material-ui/core";
-import { ComeBackLaterSvg } from "../components/img/ComeBackLaterSvg";
+import { Container, makeStyles, Typography, Grid, Chip } from "@material-ui/core";
+import { useState } from "react";
+import { Project } from "./Project";
 
-const useStyle = makeStyles({
-  gridContainer: {
-    height: "100%",
-    paddingTop: "48px !important",
-    backgroundColor: "#393E46",
+const useStyle = makeStyles((theme) => ({
+  chip: {
+    cursor: "pointer",
+    margin: theme.spacing(0.5),
+  },
+  chipContainer: {
+    textAlign: "left",
   },
   container: {
-    height: "100vh",
-    paddingLeft: 0,
-    paddingRight: 0,
+    minHeight: "100vh",
+    backgroundColor: "#222831",
+    color: "#EEEEEE",
+    fontFamily: "Open Sans, sans-serif",
+  },
+  gridContainer: {
+    minHeight: "100vh",
+    backgroundColor: "#393E46",
   },
   textContainer: {
-    padding: '1.5em',
-    color: "#00ADB5"
-  }
-});
+    padding: "1.5em",
+    color: "#00ADB5",
+  },
+}));
+
+const chips = [
+  { name: "JavaScript", selected: true },
+  { name: "ReactJS", selected: true },
+  { name: "NodeJS", selected: true },
+  { name: "HTML", selected: true },
+  { name: "CSS", selected: true },
+  { name: "API", selected: true },
+  { name: "ExpressJS", selected: true },
+  { name: "MaterialUI", selected: true },
+  { name: "Bootstrap", selected: true },
+  { name: "Mobile Design", selected: true },
+];
+
+const projects = [
+  {
+    name: "Memory Game",
+    description: "A simple memory game to test your skills.",
+    chips: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    name: "Pixel Art Maker",
+    description: "A single page app that allows user to draw their own pixel art.",
+    chips: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    name: "Custom Frogger Replica",
+    description: "A web based Frogger replica arcade game.",
+    chips: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    name: "Portfolio V1",
+    description: "My first portfolio I built while participating in the Front End Nanodegree Program.",
+    chips: ["HTML", "CSS", "JavaScript", "Mobile Design"],
+  },
+];
 
 export const Projects = () => {
   const classes = useStyle();
+  const [chipData, setChipData] = useState(chips);
+
+  const handleChipClick = (selectedChip) => {
+    const newChipData = chipData.map((chip) => {
+      if (chip.name === selectedChip.name) {
+        chip.selected = !chip.selected;
+      }
+      return chip;
+    });
+    setChipData(newChipData);
+  };
   return (
-    <Container
-      maxWidth="xl"
-      id="projects-section"
-      className={classes.container}
-    >
+    <Container id="projects-section" maxWidth="xl" className={classes.container}>
       <Grid
-        container={true}
+        container
+        className={classes.gridContainer}
+        direction="column"
         justifyContent="center"
         alignItems="center"
-        className={classes.gridContainer}
-      >
-        <Grid item xs={12} sm={12} md={6} className={classes.textContainer}>
-          <Box>
-            <Typography variant="h2" component="h2">
-              This is awkward...
-            </Typography>
-            <Typography variant="h4" component="h4" style={{color: "#EEEEEE"}}>
-              There is nothing here at the moment, please check back later!
-            </Typography>
-          </Box>
+        spacing={4}>
+        <Grid item container xs={12} md={4} direction="column" justifyContent="center">
+          <Typography variant="h4">Things I have built</Typography>
+          <Typography variant="subtitle2">Things to filter by</Typography>
+          <Grid className={classes.chipContainer} item>
+            {chipData.map((chip, index) => (
+              <Chip
+                key={`${chip.name}-${index}`}
+                className={classes.chip}
+                variant={chip.selected ? "default" : "outlined"}
+                color="primary"
+                label={chip.name}
+                onClick={() => {
+                  handleChipClick(chip);
+                }}
+              />
+            ))}
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={6}>
-          <Box className={classes.boxContainer}>
-            <ComeBackLaterSvg width={'100%'} height={'100%'}/>
-          </Box>
+        <Grid item container xs={12} md={4} direction="column" justifyContent="center" spacing={2}>
+          {projects.map((project, index) => (
+            <Grid key={`${project.name}-${index}`} item>
+              <Project name={project.name} description={project.description} chips={project.chips} />
+            </Grid>
+          ))}
         </Grid>
       </Grid>
     </Container>

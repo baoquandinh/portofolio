@@ -4,9 +4,8 @@ import { GoMarkGithub } from "react-icons/go";
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import "../styles/home.css";
 import { handleTransition } from "../components/Navbar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { IconContext } from "react-icons";
-import Image from "react-bootstrap/Image";
 
 const goToWebpage = (link) => {
   window.open(link, "_target");
