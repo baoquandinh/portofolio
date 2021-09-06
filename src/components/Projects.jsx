@@ -50,13 +50,13 @@ const projects = [
   {
     name: "Pixel Art Maker",
     description: "A single page app that allows user to draw their own pixel art.",
-    src: "pixelArtMaker",
+    src: "pixelartmaker",
     chips: ["HTML", "CSS", "JavaScript"],
   },
   {
     name: "Custom Frogger Replica",
     description: "A web based Frogger replica arcade game.",
-    src: "froggerReplica",
+    src: "arcadegame",
     chips: ["HTML", "CSS", "JavaScript"],
   },
   {
