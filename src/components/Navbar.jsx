@@ -21,7 +21,7 @@ export const Navbar = () => {
             key={`${item}${index}`}
             onClick={() => handleTransition(item)}
           >
-            <Nav.Link>{item.toUpperCase()}</Nav.Link>
+            <Nav.Link href={`#${item}-section`}>{item.toUpperCase()}</Nav.Link>
           </Nav.Item>
         ))}
       </Nav>
