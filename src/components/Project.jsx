@@ -11,8 +11,7 @@ const useStyle = makeStyles((theme) => ({
   },
   chip: {
     margin: theme.spacing(0.5),
-    borderRadius: 0,
-    // backgroundColor: '#00ADB5'
+    backgroundColor: "#00ADB5",
   },
   projectTitle: {
     cursor: "pointer",
