@@ -9,21 +9,18 @@ const useStyle = makeStyles((theme) => ({
   },
   chipContainer: {
     textAlign: "left",
+    paddingLeft: "0 !important",
+    paddingRight: "0 !important",
   },
   container: {
     minHeight: "100vh",
-    // backgroundColor: "#222831",
     backgroundColor: "#393E46",
     color: "#EEEEEE",
     fontFamily: "Open Sans, sans-serif",
-    paddingTop: 55
+    paddingTop: 55,
   },
   gridContainer: {
     padding: 15,
-  },
-  projectsContainer: {
-    // maxHeight: "700px",
-    // overflow: "auto"
   },
   projectTitleContainer: {
     height: 240,
@@ -121,7 +118,8 @@ export const Projects = () => {
           xs={12}
           md={4}
           direction="column"
-          justifyContent="center">
+          justifyContent="center"
+          spacing={2}>
           <Typography variant="h4">Things I have built</Typography>
           <Typography variant="subtitle2">Things to filter by</Typography>
           <Grid className={classes.chipContainer} item>
@@ -139,7 +137,13 @@ export const Projects = () => {
             ))}
           </Grid>
         </Grid>
-        <Grid className={classes.projectsContainer} item container xs={12} md={4}  justifyContent="flex-start" spacing={2}>
+        <Grid
+          item
+          container
+          xs={12}
+          md={4}
+          justifyContent="flex-start"
+          spacing={2}>
           {projects.map((project, index) => (
             <Grid key={`${project.name}-${index}`} item>
               <Project
