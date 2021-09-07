@@ -142,7 +142,6 @@ export const Projects = () => {
           container
           xs={12}
           md={4}
-          justifyContent="flex-start"
           spacing={2}>
           {projects.map((project, index) => (
             <Grid key={`${project.name}-${index}`} item>
