@@ -6,6 +6,7 @@ import { useState } from "react";
 import emailjs from "emailjs-com";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import CheckIcon from "@material-ui/icons/Check";
+import env from "react-dotenv";
 import * as EmailValidator from "email-validator";
 
 const useStyles = makeStyles((theme) => ({
@@ -107,14 +108,14 @@ export const ContactMe = () => {
     setLoading(true);
     emailjs
       .send(
-        "service_86dgq1p",
-        "template_7axkvtc",
+        process.env.REACT_APP_EMAIL_SERVICE_ID,
+        process.env.REACT_APP_EMAIL_TEMPLATE_ID,
         {
           name,
           email,
           message,
         },
-        "user_UfC3xQimf9UCPJKwL75dC"
+        process.env.REACT_APP_EMAIL_USER_ID
       )
       .then(
         (response) => {
