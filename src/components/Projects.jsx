@@ -34,16 +34,22 @@ const useStyle = makeStyles((theme) => ({
 const chips = [
   { name: "JavaScript", selected: false },
   { name: "ReactJS", selected: false },
-  { name: "NodeJS", selected: false },
+  // { name: "NodeJS", selected: false },
   { name: "HTML", selected: false },
   { name: "CSS", selected: false },
-  { name: "API", selected: false },
-  { name: "ExpressJS", selected: false },
+  // { name: "API", selected: false },
+  // { name: "ExpressJS", selected: false },
   { name: "MaterialUI", selected: false },
   { name: "Mobile Design", selected: false },
 ];
 
 const myDefaultProjects = [
+  {
+    name: "Portfolio V2 (Current)",
+    description: "A redesign of my first portfolio",
+    src: window.location.pathname,
+    chips: ["HTML", "CSS", "JavaScript", "ReactJS", "MaterialUI", "Mobile Design"],
+  },
   {
     name: "Memory Game",
     description: "A simple memory game to test your skills.",
@@ -89,13 +95,12 @@ export const Projects = () => {
       setProjects(myDefaultProjects);
       return;
     }
-    const newProjects = [];
-    myDefaultProjects.forEach((project) => {
+    const newProjects = myDefaultProjects.filter((project) => {
       const chips = project.chips;
       for (let i = 0; i < projectChipFilter.length; i++) {
         const filterChip = projectChipFilter[i].name;
         if (chips.includes(filterChip)) {
-          newProjects.push(project);
+         return project
         }
       }
     });
@@ -137,12 +142,7 @@ export const Projects = () => {
             ))}
           </Grid>
         </Grid>
-        <Grid
-          item
-          container
-          xs={12}
-          md={4}
-          spacing={2}>
+        <Grid item container xs={12} md={4} spacing={2}>
           {projects.map((project, index) => (
             <Grid key={`${project.name}-${index}`} item>
               <Project

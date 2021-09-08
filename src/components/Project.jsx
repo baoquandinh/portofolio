@@ -28,10 +28,13 @@ const useStyle = makeStyles((theme) => ({
 export const Project = ({ name, description, chips, externalSrc, src }) => {
   const classes = useStyle();
   const handleClick = (source) => {
-    if (source) {
+    if (!source) return;
+    if (source === "/") {
+      window.open(source, '_self');
+    } else {
       window.open(source, "_target");
-      return;
     }
+    return;
   };
   return (
     <Box>
